@@ -23,7 +23,7 @@ class _RegisterButtonState extends State<RegisterButton> {
           minimumSize: const Size(200, 50)),
       onPressed: () {
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const RegisterPage()));
+            MaterialPageRoute(builder: (context) => RegisterPage()));
       },
       child: const Text("Register",
           style: TextStyle(

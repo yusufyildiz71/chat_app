@@ -1,4 +1,5 @@
 import 'package:chat_app/view/screens/onboard_screen.dart';
+import 'package:chat_app/view/screens/register_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -31,9 +32,9 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-                height: 200.0, child: Lottie.asset('assets/87498-fire.json')),
             SizedBox(
+                height: 200.0, child: Lottie.asset('assets/87498-fire.json')),
+            const SizedBox(
               height: 28.0,
             ),
 
@@ -44,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 borderRadius: BorderRadius.circular(32),
               ),
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 1),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 1),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(32),
                   color: Colors.white.withOpacity(0.6),
@@ -70,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8.0,
             ),
 
@@ -95,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 textInputAction: TextInputAction.done,
                 decoration: InputDecoration(
                     border: InputBorder.none,
-                    label: Padding(
+                    label: const Padding(
                       padding: EdgeInsets.only(left: 22),
                       child: Text("Password"),
                     ),
@@ -111,11 +112,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 obscureText: !isVisible,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 24.0,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     onPrimary: Colors.black,
@@ -146,7 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         FontAwesomeIcons.apple,
                         color: Colors.black,
                       )),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   SignInSocial.buildSocial(
                       context,
                       const FaIcon(
@@ -158,11 +159,11 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 _buildForgotPassword(context),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 buildNoAccount(context),
               ],
             ),
@@ -205,7 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const OnboardPage()));
+                          builder: (context) => RegisterPage()));
                 },
               text: 'Sign Up',
               style: const TextStyle(
