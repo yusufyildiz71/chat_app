@@ -21,7 +21,7 @@ class _LoginButtonState extends State<LoginButton> {
           minimumSize: const Size(200, 50)),
       onPressed: () {
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const LoginPage()));
+            MaterialPageRoute(builder: (context) => LoginScreen()));
       },
       child: const Text("Login",
           style: TextStyle(
