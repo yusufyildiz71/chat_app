@@ -23,6 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final passwordController = TextEditingController();
   bool isVisible = false;
   //FirebaseAuth _auth = FirebaseAuth.instance;
+  final navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   void dispose() {
@@ -39,10 +40,17 @@ class _LoginScreenState extends State<LoginScreen> {
         body: StreamBuilder<User?>(
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: ((context, snapshot) {
-              if (snapshot.hasData) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (snapshot.hasError) {
+                return Center(
+                  child: Text("Bir şeyler ters gitti.."),
+                );
+              } else if (snapshot.hasData) {
                 print("snapshot.hasdata");
                 return const HomePage();
-                
               } else {
                 print("BOŞŞŞŞŞ");
                 return Padding(
@@ -198,10 +206,17 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailController.text.trim(),
-      password: passwordController.text.trim(),
-    );
+    
+
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e);
+    }
+    navigatorKey.currentState!.popUntil((route)=>route.isFirst);
   }
 
   bool isValidEmail(String email) {

@@ -1,5 +1,6 @@
 import 'package:chat_app/view/screens/login_screen.dart';
 import 'package:chat_app/view/screens/onboard_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -8,6 +9,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../constatnt/login_components/or_divider.dart';
 import '../../constatnt/login_components/sign_in_social.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -25,6 +27,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final phoneController = TextEditingController();
   bool isVisible = false;
   //FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _fireStore=FirebaseFirestore.instance;
+  final FirebaseAuth _auth=FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +52,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 borderRadius: BorderRadius.circular(32),
               ),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 1),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 1),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(32),
                   color: Colors.white.withOpacity(0.6),
@@ -81,7 +86,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 borderRadius: BorderRadius.circular(32),
               ),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 1),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 1),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(32),
                   color: Colors.white.withOpacity(0.6),
@@ -117,7 +123,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 borderRadius: BorderRadius.circular(32),
               ),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 1),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 1),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(32),
                   color: Colors.white.withOpacity(0.6),
@@ -194,7 +201,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(32)),
                     minimumSize: const Size(double.infinity, 50)),
-                onPressed: () async {},
+                onPressed: () async {
+                  createUser(nameController.text, emailController.text, phoneController.text, passwordController.text).then((value) {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                  });
+                  
+                },
                 child: Text("Sign Up",
                     style: GoogleFonts.poppins(
                       fontSize: 20,
@@ -231,7 +243,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(
                   height: 16,
                 ),
-                
                 buildNoAccount(context),
               ],
             ),
@@ -271,10 +282,8 @@ class _RegisterPageState extends State<RegisterPage> {
               // hesabın olmaması burda
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => LoginScreen()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()));
                 },
               text: 'Sign İn',
               style: const TextStyle(
@@ -283,4 +292,15 @@ class _RegisterPageState extends State<RegisterPage> {
               )),
         ]));
   }
+
+Future<User?> createUser(String name,String email,String phone,String password) async{
+  var user=await _auth.createUserWithEmailAndPassword(email: email, password: password) ;
+  await _fireStore.collection("users").doc(user.user?.uid).set({
+    'email':email,
+    'name':name,
+    'phone':phone,
+  });
+  return user.user;
+}
+
 }
