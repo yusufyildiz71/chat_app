@@ -46,10 +46,10 @@ class _OnboardPageState extends State<OnboardPage> {
           inactiveSize: Size(8, 8),
           activeSize: Size(12, 12),
         ),
-        // Either Provide onSkip Callback or skipButton Widget to handle skip state
+        
         skipButton: TextButton(
           onPressed: () {
-            // print('skipButton pressed');
+            
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => LoginScreen()));
           },
@@ -58,7 +58,7 @@ class _OnboardPageState extends State<OnboardPage> {
             style: TextStyle(color: Colors.black),
           ),
         ),
-        // Either Provide onDone Callback or nextButton Widget to handle done state
+        
         nextButton: OnBoardConsumer(
           builder: (context, ref, child) {
             final state = ref.watch(onBoardStateProvider);

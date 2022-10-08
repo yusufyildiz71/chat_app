@@ -86,10 +86,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             validator: (value) {
                               if (value!.isEmpty) {
                                 print('Email boş olamaz.');
-                                return '';
+                                return 'Email boş olamaz.';
                               } else if (!isValidEmail(value)) {
                                 print('Email formatı hatalı');
-                                return '';
+                                return 'Email formatı hatalı';
                               }
                               return null;
                             },
