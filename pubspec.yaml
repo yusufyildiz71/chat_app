@@ -44,6 +44,7 @@ dependencies:
   cloud_firestore: ^3.5.0
   dependencies:
   flutter_onboard: ^2.0.0
+  top_snackbar_flutter: ^2.1.1
 
 dev_dependencies:
   flutter_test:

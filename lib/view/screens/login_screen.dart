@@ -1,6 +1,7 @@
 import 'package:chat_app/view/screens/home_screen.dart';
 import 'package:chat_app/view/screens/onboard_screen.dart';
 import 'package:chat_app/view/screens/register_screen.dart';
+import 'package:chat_app/view/screens/resetPassword_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -235,7 +236,7 @@ class _LoginScreenState extends State<LoginScreen> {
         // şifre unuttum kismi burda birazdan yap
         onTap: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const OnboardPage()));
+              MaterialPageRoute(builder: (context) => const ResetPassword()));
         });
   }
 
