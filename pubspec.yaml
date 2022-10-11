@@ -42,9 +42,10 @@ dependencies:
   firebase_core: ^1.24.0
   firebase_auth: ^3.11.0
   cloud_firestore: ^3.5.0
-  dependencies:
   flutter_onboard: ^2.0.0
   top_snackbar_flutter: ^2.1.1
+  google_sign_in: ^5.4.2
+
 
 dev_dependencies:
   flutter_test:

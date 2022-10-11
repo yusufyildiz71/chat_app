@@ -216,28 +216,28 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
             const OrDivider(),
-            Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  // iconlarin basladigi yer
-                  SignInSocial.buildSocial(
-                      context,
-                      const FaIcon(
-                        FontAwesomeIcons.apple,
-                        color: Colors.black,
-                      )),
-                  const SizedBox(width: 16),
-                  SignInSocial.buildSocial(
-                      context,
-                      const FaIcon(
-                        FontAwesomeIcons.google,
-                        color: Colors.black,
-                      )),
-                ],
-              ),
-            ),
+            // Center(
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     crossAxisAlignment: CrossAxisAlignment.center,
+            //     children: [
+            //       // iconlarin basladigi yer
+            //       SignInSocial.buildSocial(
+            //           context,
+            //           const FaIcon(
+            //             FontAwesomeIcons.apple,
+            //             color: Colors.black,
+            //           ),),
+            //       const SizedBox(width: 16),
+            //       SignInSocial.buildSocial(
+            //           context,
+            //           const FaIcon(
+            //             FontAwesomeIcons.google,
+            //             color: Colors.black,
+            //           )),
+            //     ],
+            //   ),
+            // ),
             Column(
               children: [
                 const SizedBox(

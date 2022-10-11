@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../constatnt/login_components/or_divider.dart';
 import '../../constatnt/login_components/sign_in_social.dart';
@@ -25,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isVisible = false;
   //FirebaseAuth _auth = FirebaseAuth.instance;
   final navigatorKey = GlobalKey<NavigatorState>();
+  
 
   @override
   void dispose() {
@@ -178,14 +180,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                 const FaIcon(
                                   FontAwesomeIcons.apple,
                                   color: Colors.black,
-                                )),
+                                ),
+                                //GoogleLogin(),
+                                ),
                             const SizedBox(width: 16),
                             SignInSocial.buildSocial(
-                                context,
-                                const FaIcon(
-                                  FontAwesomeIcons.google,
-                                  color: Colors.black,
-                                )),
+                              context,
+                              const FaIcon(
+                                FontAwesomeIcons.google,
+                                color: Colors.black,
+                              ),
+                              // GoogleLogin(),
+                            ),
                           ],
                         ),
                       ),
@@ -197,6 +203,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           _buildForgotPassword(context),
                           const SizedBox(height: 16),
                           buildNoAccount(context),
+                          ElevatedButton(onPressed: (){
+                            GoogleLogin();
+
+                          }, child: Text("sdasd"))
                         ],
                       ),
                     ],
@@ -207,8 +217,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future signIn() async {
-    
-
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text.trim(),
@@ -217,7 +225,25 @@ class _LoginScreenState extends State<LoginScreen> {
     } on FirebaseAuthException catch (e) {
       print(e);
     }
-    navigatorKey.currentState!.popUntil((route)=>route.isFirst);
+    navigatorKey.currentState!.popUntil((route) => route.isFirst);
+  }
+
+  Future<UserCredential> GoogleLogin() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
   bool isValidEmail(String email) {

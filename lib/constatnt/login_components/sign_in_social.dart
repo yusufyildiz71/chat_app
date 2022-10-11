@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SignInSocial {
-  static Widget buildSocial(BuildContext context, Widget icon) {
+  static Widget buildSocial(BuildContext context, Widget icon, ) {
     return Card(
       color: Colors.white,
       shape: RoundedRectangleBorder(
@@ -10,7 +10,10 @@ class SignInSocial {
       elevation: 5,
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
-        onTap: () {},
+        onTap: () {
+          
+
+        },
         child: Container(
           width: 60,
           height: 60,
