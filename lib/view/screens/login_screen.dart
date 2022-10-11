@@ -26,7 +26,6 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isVisible = false;
   //FirebaseAuth _auth = FirebaseAuth.instance;
   final navigatorKey = GlobalKey<NavigatorState>();
-  
 
   @override
   void dispose() {
@@ -175,22 +174,52 @@ class _LoginScreenState extends State<LoginScreen> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             // iconlarin basladigi yer
-                            SignInSocial.buildSocial(
-                                context,
-                                const FaIcon(
-                                  FontAwesomeIcons.apple,
-                                  color: Colors.black,
-                                ),
-                                //GoogleLogin(),
-                                ),
-                            const SizedBox(width: 16),
-                            SignInSocial.buildSocial(
-                              context,
-                              const FaIcon(
-                                FontAwesomeIcons.google,
-                                color: Colors.black,
+                            Card(
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
                               ),
-                              // GoogleLogin(),
+                              elevation: 5,
+                              child: InkWell(
+                                borderRadius: BorderRadius.circular(16),
+                                onTap: () {},
+                                child: Container(
+                                  width: 60,
+                                  height: 60,
+                                  padding: const EdgeInsets.all(16),
+                                  child: const Center(
+                                    child: FaIcon(
+                                      FontAwesomeIcons.apple,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 16),
+                           Card(
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              elevation: 5,
+                              child: InkWell(
+                                borderRadius: BorderRadius.circular(16),
+                                onTap: () {
+                                  GoogleLogin();
+                                },
+                                child: Container(
+                                  width: 60,
+                                  height: 60,
+                                  padding: const EdgeInsets.all(16),
+                                  child: const Center(
+                                    child: FaIcon(
+                                      FontAwesomeIcons.google,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -203,10 +232,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           _buildForgotPassword(context),
                           const SizedBox(height: 16),
                           buildNoAccount(context),
-                          ElevatedButton(onPressed: (){
-                            GoogleLogin();
-
-                          }, child: Text("sdasd"))
+                         
                         ],
                       ),
                     ],
@@ -240,6 +266,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final credential = GoogleAuthProvider.credential(
       accessToken: googleAuth?.accessToken,
       idToken: googleAuth?.idToken,
+      
     );
 
     // Once signed in, return the UserCredential
