@@ -105,18 +105,18 @@ class _OnboardPageState extends State<OnboardPage> {
 final List<OnBoardModel> onBoardData = [
   const OnBoardModel(
     title: "Meet new people",
-    description: "KarıSepeti lets you meet and relate to new people",
+    description: "Jungle lets you meet and relate to new people",
     imgUrl: "assets/kadın1.jpg",
   ),
   const OnBoardModel(
-    title: "Çok düşünme güzelim düşüneni sevmezler",
+    title: "Meet new people",
     description:
-        "Bazen sadece yorgun oluyor insan . Ne küs , ne yalnız , ne de aşık.....",
+        "ungle lets you meet and relate to new people",
     imgUrl: 'assets/kadın2.jpg',
   ),
   const OnBoardModel(
-    title: "Sarışının adı esmerin tadı",
-    description: "Esmerler kıskanılmasaydı solaryum icat edilmezdi...",
+    title: "Meet new peopleı",
+    description: "ungle lets you meet and relate to new people",
     imgUrl: 'assets/kadın3.jpg',
   ),
 ];
