@@ -1,4 +1,4 @@
-import 'package:chat_app/view/screens/login_screen.dart';
+import 'package:chat_app/view/screens/Auth/login_screen.dart';
 import 'package:chat_app/view/screens/onboard_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
@@ -7,8 +7,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../constatnt/login_components/or_divider.dart';
-import '../../constatnt/login_components/sign_in_social.dart';
+import '../../../constatnt/login_components/or_divider.dart';
+import '../../../constatnt/login_components/sign_in_social.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterPage extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:chat_app/view/screens/login_screen.dart';
+import 'package:chat_app/view/screens/Auth/login_screen.dart';
 import 'package:chat_app/view/screens/onboard_screen.dart';
 import 'package:flutter/material.dart';
 

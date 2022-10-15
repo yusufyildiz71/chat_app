@@ -1,3 +1,8 @@
+import 'package:chat_app/view/screens/MainScreens/favorites_screen.dart';
+import 'package:chat_app/view/screens/MainScreens/home_screen.dart';
+import 'package:chat_app/view/screens/MainScreens/match_screen.dart';
+import 'package:chat_app/view/screens/MainScreens/messages_screen.dart';
+import 'package:chat_app/view/screens/MainScreens/settings_screen.dart';
 import 'package:circle_nav_bar/circle_nav_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -75,37 +80,11 @@ class _HomePageState extends State<HomePage>
         physics: const NeverScrollableScrollPhysics(),
         controller: tabController,
         children: [
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            color: Colors.white,
-            child: Padding(
-              padding: EdgeInsets.all(11),
-              child: Center(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(user.email!),
-                  // Text(user.phoneNumber!),
-                  ElevatedButton.icon(
-                    icon: Icon(Icons.arrow_back),
-                    label: Text("Sign out"),
-                    onPressed: () {
-                      FirebaseAuth.instance.signOut();
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const OnboardPage()));
-                    },
-                  )
-                ],
-              )),
-            ),
-          ),
-          Container(),
-          Container(),
-          Container(),
-          Container(),
+          const Home(),
+          const Messages(),
+          const Match(),
+          const Favorites(),
+          const Settings(),
         ],
       ),
     );

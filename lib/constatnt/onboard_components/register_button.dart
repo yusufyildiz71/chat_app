@@ -1,7 +1,7 @@
 import 'package:chat_app/view/screens/onboard_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../../view/screens/register_screen.dart';
+import '../../view/screens/Auth/register_screen.dart';
 
 class RegisterButton extends StatefulWidget {
   const RegisterButton({Key? key}) : super(key: key);

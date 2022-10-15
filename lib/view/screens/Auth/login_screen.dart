@@ -1,7 +1,7 @@
-import 'package:chat_app/view/screens/home_screen.dart';
+import 'package:chat_app/view/screens/tabs.dart';
 import 'package:chat_app/view/screens/onboard_screen.dart';
-import 'package:chat_app/view/screens/register_screen.dart';
-import 'package:chat_app/view/screens/resetPassword_screen.dart';
+import 'package:chat_app/view/screens/Auth/register_screen.dart';
+import 'package:chat_app/view/screens/Auth/resetPassword_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +10,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../../constatnt/login_components/or_divider.dart';
-import '../../constatnt/login_components/sign_in_social.dart';
+import '../../../constatnt/login_components/or_divider.dart';
+import '../../../constatnt/login_components/sign_in_social.dart';
 
 class LoginScreen extends StatefulWidget {
   @override

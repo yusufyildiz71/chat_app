@@ -46,6 +46,7 @@ dependencies:
   top_snackbar_flutter: ^2.1.1
   google_sign_in: ^5.4.2
   circle_nav_bar: ^1.0.2
+  cool_alert: ^1.1.0
 
 
 dev_dependencies:
